@@ -6,6 +6,22 @@
 # 参考文档: 
 [为Classic负载均衡器配置代理协议支持](http://docs.aws.amazon.com/zh_cn/elasticloadbalancing/latest/classic/enable-proxy-protocol.html)
 
+
+代理协议标头
+
+在您使用为 TCP/SSL 连接配置的负载均衡器时，代理协议标头有助于识别客户端的 IP 地址。因为负载均衡器会拦截客户端与您的实例之间的流量，因此您实例的访问日志中将包含负载均衡器的 IP 地址而不是原始客户端的 IP 地址。您可以分析该请求的第一行，以检索该客户端的 IP 地址和端口号。<br>
+IPv6 标头中的代理地址是负载均衡器的公有 IPv6 地址。此 IPv6 地址与从该负载均衡器以 ipv6 或 dualstack 开头的 DNS 名称解析而来的 IP 地址相匹配。如果客户端使用 IPv4 进行连接，则代理标头中的地址是该负载均衡器的私有 IPv4 地址，不能在 EC2-Classic 网络外部通过 DNS 查找进行解析。<br>
+<br>
+该代理协议行以回车符和换行符 ("\r\n") 结束，且具有以下形式：<br>
+```Bash
+PROXY_STRING + single space + INET_PROTOCOL + single space + CLIENT_IP + single space + PROXY_IP + single space + CLIENT_PORT + single space + PROXY_PORT + "\r\n"
+```
+示例：IPv4<br>
+下面是 IPv4 的代理协议行的示例。<br>
+```Bash
+PROXY TCP4 198.51.100.22 203.0.113.7 35646 80\r\n
+```
+
 # 配置:
 * ELB配置
 ** 侦听TCP 5000端口
