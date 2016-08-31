@@ -19,7 +19,7 @@ PROXY_STRING + single space + INET_PROTOCOL + single space + CLIENT_IP + single 
 示例：IPv4<br>
 下面是 IPv4 的代理协议行的示例。<br>
 ```Bash
-PROXY TCP4 198.51.100.22 203.0.113.7 35646 80\r\n
+PROXY TCP4 54.222.152.163 10.0.11.239 45418 5000\r\n
 ```
 
 # 配置:
