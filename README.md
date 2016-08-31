@@ -3,6 +3,9 @@
 * 目标
 为Classic负载均衡器配置代理协议支持, 服务端处理代码示例
 
+参考文档: 
+http://docs.aws.amazon.com/zh_cn/elasticloadbalancing/latest/classic/enable-proxy-protocol.htmlhttp://docs.aws.amazon.com/zh_cn/elasticloadbalancing/latest/classic/enable-proxy-protocol.html
+
 例如: 侦听TCP 5000端口
 
 配置:
