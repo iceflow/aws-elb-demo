@@ -50,11 +50,11 @@ python tcp_server.py
 ```Bash
 make
 ```
-* 运行
+* 运行<br>
 服务端:<br>
-** 接收客户端连接，处理分析第一个ELB主动发送的代理数据
-** 并回应客户端的请求数据
-** 收到'q'或者'Q', 断开连接
+** 接收客户端连接，处理分析第一个ELB主动发送的代理数据<br>
+** 并回应客户端的请求数据<br>
+** 收到'q'或者'Q', 断开连接<br>
 ```Bash
 # ./elb_tcp_server
 TCPServer Waiting for client on port 5000
