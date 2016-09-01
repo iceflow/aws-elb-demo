@@ -24,8 +24,8 @@ PROXY TCP4 54.222.152.163 10.0.11.239 45418 5000\r\n
 
 # 配置:
 * ELB配置
-** 侦听TCP 5000端口
-** 启用
+* 侦听TCP 5000端口
+* 启用
 ```Bash
 aws elb create-load-balancer-policy --load-balancer-name my-loadbalancer --policy-name my-ProxyProtocol-policy --policy-type-name ProxyProtocolPolicyType --policy-attributes AttributeName=ProxyProtocol,AttributeValue=true
 ```
@@ -33,7 +33,6 @@ aws elb create-load-balancer-policy --load-balancer-name my-loadbalancer --polic
 # 测试:
 * 客户端使用: 
 1. telnet ELB_Domain_Name 5000
-
 
 # 参考代码
 ## Python
@@ -43,18 +42,17 @@ aws elb create-load-balancer-policy --load-balancer-name my-loadbalancer --polic
 python tcp_server.py
 ```
 
-
 ## C
 * elb_tcp_server.c
 * 编译
 ```Bash
 make
 ```
-* 运行<br>
-服务端:<br>
-** 接收客户端连接，处理分析第一个ELB主动发送的代理数据<br>
-** 并回应客户端的请求数据<br>
-** 收到'q'或者'Q', 断开连接<br>
+* 运行
+  * 服务端:
+    * 接收客户端连接，处理分析第一个ELB主动发送的代理数据
+    * 并回应客户端的请求数据
+    * 收到'q'或者'Q', 断开连接
 ```Bash
 # ./elb_tcp_server
 TCPServer Waiting for client on port 5000
@@ -74,8 +72,8 @@ I got a connection from (172.31.7.103, 4991)
 Client IP: 54.222.152.163
 RECIEVED DATA = 123
 ```
-客户端:<br>
-Telnet 端口测试, 输入 'q' 或者 'Q' 退出连接.
+  * 客户端:<br>
+    * Telnet 端口测试, 输入 'q' 或者 'Q' 退出连接.
 
 ```Bash
 # telnet testELBProxy-*******.cn-north-1.elb.amazonaws.com.cn  5000
