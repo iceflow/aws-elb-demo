@@ -51,7 +51,41 @@ python tcp_server.py
 make
 ```
 * 运行
+服务端:<br>
+** 接收客户端连接，处理分析第一个ELB主动发送的代理数据
+** 并回应客户端的请求数据
+** 收到'q'或者'Q', 断开连接
 ```Bash
-./elb_tcp_server
+# ./elb_tcp_server
+TCPServer Waiting for client on port 5000
+I got a connection from (172.31.1.237, 64724)
+Client IP: 172.31.1.237
+Connection (172.31.1.237, 64724): 0 received. Quit.
+I got a connection from (172.31.7.103, 4986)
+Client IP: 172.31.7.103
+Connection (172.31.7.103, 4986): 0 received. Quit.
+I got a connection from (172.31.1.237, 64729)
+Client IP: 172.31.1.237
+Connection (172.31.1.237, 64729): 0 received. Quit.
+I got a connection from (172.31.7.103, 4990)
+Client IP: 172.31.7.103
+Connection (172.31.7.103, 4990): 0 received. Quit.
+I got a connection from (172.31.7.103, 4991)
+Client IP: 54.222.152.163
+RECIEVED DATA = 123
 ```
+客户端:<br>
+Telnet 端口测试, 输入 'q' 或者 'Q' 退出连接.
+
+```Bash
+# telnet testELBProxy-*******.cn-north-1.elb.amazonaws.com.cn  5000
+Trying 54.223.90.209...
+Connected to testELBProxy-*****.cn-north-1.elb.amazonaws.com.cn.
+Escape character is '^]'.
+123
+123
+q
+Connection closed by foreign host.
+```
+
 
