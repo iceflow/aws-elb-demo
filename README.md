@@ -22,6 +22,10 @@ PROXY_STRING + single space + INET_PROTOCOL + single space + CLIENT_IP + single 
 PROXY TCP4 54.222.152.163 10.0.11.239 45418 5000\r\n
 ```
 
+启用了Proxy协议支持的ELB，会在接收到客户端连接后(accept后)，向后端服务器主动发送一个代理协议信息，后续客户端和服务端之间交互内容没有任何更改。
+
+
+
 # 配置:
 * ELB配置
 * 侦听TCP 5000端口
