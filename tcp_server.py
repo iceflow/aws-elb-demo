@@ -17,6 +17,15 @@ class MyBaseRequestHandlerr(BaseRequestHandler):
                 #一次读取1024字节,并去除两端的空白字符(包括空格,TAB,\r,\n)  
                 data = self.request.recv(1024).strip()  
                   
+                if 0 == len(data):
+                    print "receive 0 from (%r):%r Quit" % (self.client_address, data)  
+                    break;
+
+
+                if data in ['q', 'Q']:
+                    print "Client Quit from (%r):%r" % (self.client_address, data)  
+                    break;
+
                 #self.client_address是客户端的连接(host, port)的元组  
                 print "receive from (%r):%r" % (self.client_address, data)  
                   
